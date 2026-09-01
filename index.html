@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AML Risk Cases Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 p-6 md:p-12">
+
+    <div class="max-w-5xl mx-auto space-y-8">
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b border-slate-200 pb-5">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-900">AML Risk Cases</h1>
+                <p class="text-sm text-slate-500 mt-1">Select a suspicious case flagged by the risk agent to start investigation.</p>
+            </div>
+            <span class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Risk Agent Active
+            </span>
+        </div>
+
+        <!-- Cases Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="casesGrid">
+            <!-- Case Card 1 -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Case ID</span>
+                        <h2 class="text-xl font-bold text-slate-800">CASE-2026-08-0341</h2>
+                    </div>
+                    <span class="bg-red-100 text-red-700 font-bold text-xs px-2.5 py-1 rounded-md uppercase">CRITICAL</span>
+                </div>
+
+                <div class="space-y-2 text-sm text-slate-600 mb-6">
+                    <p><strong class="text-slate-800">Customer:</strong> M. Al-Shahri (CUST-10432)</p>
+                    <p><strong class="text-slate-800">Segment:</strong> SME - Import/Export</p>
+                    <p><strong class="text-slate-800">Risk Score:</strong> 0.86 / 1.0</p>
+                </div>
+
+                <button 
+                    onclick="openChat('CASE-2026-08-0341')"
+                    class="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2.5 px-4 rounded-xl transition cursor-pointer"
+                >
+                    <span>Investigate with AI</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function openChat(caseId) {
+            // Save selected Case ID and redirect to Page 2
+            localStorage.setItem('selectedCaseId', caseId);
+            window.location.href = 'chat.html';
+        }
+    </script>
+</body>
+</html>
